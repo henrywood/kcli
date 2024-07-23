@@ -1,4 +1,4 @@
-<?php
+
 namespace Andrey\Cli;
 
 use InvalidArgumentException;
@@ -11,9 +11,9 @@ use Andrey\Cli\Types\Param;
 
 use Andrey\Cli\Utils\Output;
 
-readonly class App
-{
-    use Output;
+class App {
+
+use Output;
 
     private const HELP_CMD = 'help';
 
@@ -34,7 +34,7 @@ readonly class App
         }
     }
 
-    public function run(array $argv): void
+    public function run(array $argv): int
     {
         $key = mb_strtolower($argv[1] ?? 'default');
 
@@ -67,18 +67,18 @@ readonly class App
         }
 
         if (is_string($command->service['instance'])) {
-            $instance = new ($command->service['instance'])();
+
+            	//$instance = new ($command->service['instance'])();
+		$class = $command->service['instance'];
+		$methodKey = $command->service['entrypoint'];
+
+		return __CODEGEN__SWM__SERVICE($class, $methodKey, $context);
+
         } elseif (is_callable($command->service['instance'])) {
             $instance = $command->service['instance']();
         } else {
             throw new InvalidArgumentException('Invalid service provided to command '.$key);
         }
-
-        if (!method_exists($instance, $command->service['entrypoint'])) {
-            throw new InvalidArgumentException('Invalid entrypoint provided to command '.$key);
-        }
-
-        $instance->{$command->service['entrypoint']}($context);
     }
 
     private function writeAppHeader(Command $command): void
