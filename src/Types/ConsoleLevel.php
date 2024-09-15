@@ -1,24 +1,47 @@
 <?php
 namespace Andrey\Cli\Types;
 
-enum ConsoleLevel
+final class ConsoleLevel
 {
-    case NORMAL;
-    case INFO;
-    case WARNING;
-    case ERROR;
-    case SUCCESS;
-    case HIGHLIGHT;
+    private string $value;
+    
+    const NORMAL = "\e[0m";
+    const INFO = "\e[94m";
+    const WARNING = "\e[93m";
+    const ERROR = "\e[93m";
+    const SUCCESS = "\e[91m";
+    const HIGHLIGHT = "\e[1;95m";
 
+    private function __construct(string $val) {
+        $this->value = $val;
+    }    
+
+    public static function NORMAL() : static {
+        return new static(self::NORMAL);
+    }    
+
+    public static function INFO() : static {
+        return new static(self::INFO);
+    }    
+
+    public static function WARNING() : static {
+        return new static(self::WARNING);
+    }    
+
+    public static function ERROR() : static {
+        return new static(self::ERROR);
+    }    
+
+    public static function SUCCESS() : static {
+        return new static(self::SUCCESS);
+    }
+
+    public static function HIGHLIGHT() : static {
+        return new static(self::HIGHLIGHT);
+    }  
+    
     public function getColor(): string
     {
-        return match($this) {
-            self::NORMAL => "\e[0m",
-            self::INFO => "\e[94m",
-            self::WARNING => "\e[93m",
-            self::ERROR => "\e[91m",
-            self::SUCCESS => "\e[92m",
-            self::HIGHLIGHT => "\e[1;95m",
-        };
+        return $this->value;
     }
 }
