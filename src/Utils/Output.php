@@ -13,8 +13,10 @@ trait Output
     protected const STYLE_RED = "\e[91m";
     protected const STYLE_GRAY = "\e[37m";
 
-    public static function console(string $message, ConsoleLevel $level = ConsoleLevel::NORMAL): void
+    public static function console(string $message, ?ConsoleLevel $level = null): void
     {
+        if (is_null($level)) $level = ConsoleLevel::NORMAL();
+        
         echo sprintf(
             "\e[1m\e[36m[%s]: %s%s\e[0m\n",
             date('d/m/Y H:i:s'),
@@ -25,8 +27,10 @@ trait Output
         flush();
     }
 
-    public static function center(string $message, ConsoleLevel $level = ConsoleLevel::NORMAL, int $columns = 60): void
+    public static function center(string $message, ?ConsoleLevel $level = null, int $columns = 60): void
     {
+        if (is_null($level)) $level = ConsoleLevel::NORMAL();
+        
         $messageOriginal = $message;
         $nChars = floor($columns * .8);
 
