@@ -13,22 +13,35 @@ use Andrey\Cli\Utils\Output;
 
 class App {
 
-use Output;
-
+    use Output;
+	
+    private string $appName,
+    private string $description,
+    private string $cmd,
+    /** @var Param[] */
+    private array $params,
+    /** @var Command[] */
+    private array $commands,
     private const HELP_CMD = 'help';
 
     /**
      * @throws CliException
      */
     public function __construct(
-        private string $appName,
-        private string $description,
-        private string $cmd,
+        string $appName,
+        string $description,
+        string $cmd,
         /** @var Param[] */
-        private array $params,
+        array $params,
         /** @var Command[] */
-        private array $commands,
+        array $commands
     ) {
+	$this->appName = $appName;
+	$this->description = $description;
+	$this->cmd = $cmd;
+	$this->params = $params;
+	$this->commands = $commands;
+
         if (PHP_SAPI !== 'cli') {
             throw new CliException('This tool can only be executed from CLI');
         }
