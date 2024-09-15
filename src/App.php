@@ -21,7 +21,8 @@ class App {
     /** @var Param[] */
     private array $params,
     /** @var Command[] */
-    private array $commands,
+    private array $commands;
+
     private const HELP_CMD = 'help';
 
     /**
