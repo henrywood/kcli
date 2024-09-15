@@ -1,20 +1,38 @@
 <?php
 namespace Andrey\Cli\Types;
 
-readonly class Param
+class Param
 {
-    public mixed $value;
+    /** @var mixed $value */
+    public $value;
 
+    public string $key;
+    public string $flag;
+    public bool $required = false;
+    public ?string $defaultValue = null;
+    public ?string $helpText = null;
+    public bool $isBool = false;
+    
     public function __construct(
-        public string $key,
-        public string $flag,
-        public bool $required = false,
-        public ?string $defaultValue = null,
-        public ?string $helpText = null,
-        public bool $isBool = false,
-    ) { }
+        string $key,
+        string $flag,
+        bool $required = false,
+        ?string $defaultValue = null,
+        ?string $helpText = null,
+        bool $isBool = false
+    ) {
+        $this->key = $key;
+        $this->flag = $flag;
+        $this->required = $required;
+        $this->defaultValue = $defaultValue;
+        $this->helpText = $helpText;
+        $this->isBool = $isBool;
+    }
 
-    public function withValue(mixed $value): self
+    /**
+     * @param mixed $value
+     */
+    public function withValue($value): self
     {
         $clone = clone $this;
         $clone->value = $value;
