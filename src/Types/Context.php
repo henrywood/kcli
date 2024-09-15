@@ -1,7 +1,7 @@
 <?php
 namespace Andrey\Cli\Types;
 
-readonly class Context
+class Context
 {
     public function __construct(private array $params)
     { }
