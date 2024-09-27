@@ -1,4 +1,4 @@
-
+<?php
 namespace Andrey\Cli;
 
 use InvalidArgumentException;
