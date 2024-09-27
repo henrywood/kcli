@@ -11,7 +11,7 @@ use Andrey\Cli\Types\Param;
 
 use Andrey\Cli\Utils\Output;
 
-class App {
+class Application {
 
     use Output;
 	
