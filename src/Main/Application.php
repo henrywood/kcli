@@ -1,5 +1,5 @@
 <?php
-namespace Andrey\Cli\App;
+namespace Andrey\Cli\Main;
 
 use InvalidArgumentException;
 use Andrey\Cli\Exceptions\CliException;
