@@ -15,13 +15,13 @@ class Application {
 
 	use Output;
 
-	private string $appName,
-		private string $description,
-		private string $cmd,
-		/** @var Param[] */
-		private array $params,
-		/** @var Command[] */
-		private array $commands;
+	private string $appName;
+	private string $description;
+	private string $cmd;
+	/** @var Param[] */
+	private array $params;
+	/** @var Command[] */
+	private array $commands;
 
 	private const HELP_CMD = 'help';
 
