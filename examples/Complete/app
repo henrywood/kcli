@@ -4,7 +4,7 @@ namespace Andrey\Cli\Examples\Complete;
 use Exception;
 use InvalidArgumentException;
 
-use Andrey\Cli\App;
+use Andrey\Cli\Main\Application as App;
 
 
 use Andrey\Cli\Types\ConsoleLevel;
