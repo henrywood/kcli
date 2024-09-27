@@ -100,7 +100,7 @@ class Application {
 		echo self::CLEAR;
 
 		self::newLine();
-		self::center("Starting Service: {$this->appName} - {$command->key}", ConsoleLevel::HIGHLIGHT());
+		self::center("Starting: {$this->appName} - {$command->key}", ConsoleLevel::HIGHLIGHT());
 		self::newLine();
 	}
 
