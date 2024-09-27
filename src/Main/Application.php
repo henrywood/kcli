@@ -57,7 +57,7 @@ class Application {
 
 		if ($command === null && $key === self::HELP_CMD) {
 			$this->helper();
-			return;
+			return 0;
 		}
 
 		$command ?? throw new InvalidArgumentException('Command not found.');
@@ -77,7 +77,7 @@ class Application {
 
 		if (isset($command->service['handler']) && is_callable($command->service['handler'])) {
 			$command->service['handler']($context);
-			return;
+			return 0;
 		}
 
 		if (is_string($command->service['instance'])) {
