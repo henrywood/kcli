@@ -12,6 +12,7 @@ trait Output
 
     protected const STYLE_RED = "\e[91m";
     protected const STYLE_GRAY = "\e[37m";
+    protected const STYLE_YELLOW = "\e[33m";
 
     public static function console(string $message, ?ConsoleLevel $level = null): void
     {
