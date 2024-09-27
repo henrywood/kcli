@@ -204,6 +204,7 @@ HELPER;
 		$close = self::STYLE_CLOSE;
 		$bold = self::STYLE_BOLD;
 		$gray = self::STYLE_GRAY;
+		$yellow = self::STYLE_YELLOW;
 
 		$hasParams = count($command->params) > 0;
 
@@ -224,10 +225,13 @@ PARAMS;
 			$finalParams = '';
 		}
 
-		return <<<COMMAND
-  {$bold}Command <{$command->key}> Usage:{$close}
-	{$gray}{$this->cmd} {$command->key} {$paramsUsage}[...globals]{$close}
+                return <<<COMMAND
+  {$bold}Command <{$command->key}>{$eol}
+        {$yellow}{$command->description}{$close}{$eol}
+        {$bold}Usage:{$close}
+        {$gray}{$this->cmd} {$command->key} {$paramsUsage}[...globals]{$close}
 {$finalParams}
+{$eol}
 COMMAND;
 	}
 
