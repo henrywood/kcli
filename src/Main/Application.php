@@ -174,7 +174,7 @@ class Application {
 	{
 		echo self::CLEAR;
 		self::newLine();
-		self::center($this->appName, ConsoleLevel::HIGHLIGHT);
+		self::center($this->appName, ConsoleLevel::HIGHLIGHT());
 		self::center($this->description);
 
 		$close = self::STYLE_CLOSE;
